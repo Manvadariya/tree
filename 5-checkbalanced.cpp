@@ -21,6 +21,30 @@ int height(node* root){
     return 1 + max(lheight, rheight);
 }
 
+// TC: O(n^2)
+// bool isBalanced(node *root){
+//     if (root == NULL) return true;
+//     int lheight = height(root->left);
+//     int rheight = height(root->right);
+//     // return abs(lheight - rheight) <= 1 && isBalanced(root->left) && isBalanced(root->right);
+//     if(abs(lheight - rheight) > 1) return false;
+//     bool a = isBalanced(root->left);
+//     if(a==false) return false;
+//     bool b = isBalanced(root->right);
+//     if(b==false) return false;
+//     return true;
+// }
+
+// TC: O(n)
+int isBalanced(node* root){
+    if(root == NULL) return 0;
+    int lh = isBalanced(root->left);
+    int rh = isBalanced(root->right);
+    if(lh == -1 || rh == -1) return -1;
+    if(abs(lh - rh) > 1) return -1;
+    return 1 + max(lh, rh);
+}
+
 int main()
 {
     struct node *root = new node(1);
@@ -37,6 +61,6 @@ int main()
     root->left->right->left->left = new node(12);
     root->right->right->left->right = new node(13);
 
-    cout << height(root);
+    cout << isBalanced(root);
     return 0;
 }
