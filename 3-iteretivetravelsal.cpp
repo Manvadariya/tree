@@ -79,7 +79,6 @@ vector<int> postorder(node *root){
     if(root == NULL)  return ans;
     stack<node*> s;
     node *curr = root;
-    node *prev = NULL;
     while(curr != NULL || !s.empty()){
         if(curr != NULL){
             s.push(curr);

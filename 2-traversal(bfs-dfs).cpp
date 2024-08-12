@@ -70,6 +70,16 @@ vector<vector<int>> bfs(node *root){
     }
     return ans;
 }
+void levelNodes(node* root, vector<vector<int>>& answer, int level){
+    if(root == NULL) return;
+    // if(answer.size() <= level){
+    //     answer.push_back({});
+    // }
+    // this is compulsory if we are not initializing the answer vector with empty vectors
+    answer[level].push_back(root->data);
+    levelNodes(root->left, answer, level + 1);
+    levelNodes(root->right, answer, level + 1);
+}
 int main()
 {
     struct node *root = new node(1);
