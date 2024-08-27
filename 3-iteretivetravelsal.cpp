@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-#include <queue>
 #include <stack>
 
 using namespace std;
@@ -102,8 +101,6 @@ vector<int> postorder(node *root){
     }
     return ans;
 }
-
-
 
 // using 1 stack all 3 traversal
 
